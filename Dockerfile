@@ -1,32 +1,18 @@
 pipeline {
-    agent any
-
+    agent none 
     stages {
-        
-        stage('Validate') {
+        stage('Example Build') {
+            agent { docker 'maven:3.8.1-adoptopenjdk-11' } 
             steps {
-                sh 'mvn validate'
+                echo 'Hello, Maven'
+                sh 'mvn --version'
             }
         }
-        stage('Build') {
+        stage('Example Test') {
+            agent { docker 'openjdk:8-jre' } 
             steps {
-                sh 'mvn package'
-            }
-        }
-        stage('Test') {
-            steps {
-                sh 'mvn test'
-            }
-        }
-    
-        docker { image 'node:16.13.1-alpine' }
-        }
-        
-        stages {
-        
-        stage('Test') {
-            steps {
-                sh 'node --version'
+                echo 'Hello, JDK'
+                sh 'java -version'
             }
         }
     }

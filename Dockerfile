@@ -20,8 +20,10 @@ pipeline {
         }
     
         docker { image 'node:16.13.1-alpine' }
-    }
-    stages {
+        }
+        
+        stages {
+        
         stage('Test') {
             steps {
                 sh 'node --version'

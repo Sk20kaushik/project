@@ -1,3 +1,27 @@
+pipeline {
+    agent any
+
+    stages {
+        
+        stage('Validate') {
+            steps {
+                sh 'mvn validate'
+            }
+        }
+        stage('Build') {
+            steps {
+                sh 'mvn package'
+            }
+        }
+        stage('Test') {
+            steps {
+                sh 'mvn test'
+            }
+        }
+        stage('Deploy') {              
+           steps {
+               sh '
+
 # Starting off with the Jenkins base Image
 FROM jenkins/jenkins:latest
 
@@ -15,4 +39,10 @@ ENV JAVA_OPTS -Djenkins.install.runSetupWizard=false
 COPY executors.groovy /usr/share/jenkins/ref/init.groovy.d/
 COPY default-user.groovy /usr/share/jenkins/ref/init.groovy.d/
 
-VOLUME /var/jenkins_home
+VOLUME /var/jenkins_home'
+                
+            }
+        }
+
+    }
+}

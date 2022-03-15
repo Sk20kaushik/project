@@ -18,20 +18,12 @@ pipeline {
                 sh 'mvn test'
             }
         }
-        stage('Deploy') {
-            steps {
-                agent {
-        docker { image 'node:16.13.1-alpine' }
-    }
-    stages {
-        stage('Test') {
+        stage('Deploy') {              
            steps {
-                sh 'node --version'
+                sh 'deploying'
                 
             }
         }
 
     }
-        
-            }
-        }
+}

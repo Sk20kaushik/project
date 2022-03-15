@@ -1,29 +1,12 @@
 pipeline {
-    agent any
-
+    agent {
+        docker { image 'node:16.13.1-alpine' }
+    }
     stages {
-        
-        stage('Validate') {
-            steps {
-                sh 'mvn validate'
-            }
-        }
-        stage('Build') {
-            steps {
-                sh 'mvn package'
-            }
-        }
         stage('Test') {
             steps {
-                sh 'mvn test'
+                sh 'node --version'
             }
         }
-        stage('Deploy') {              
-            steps {
-                echo 'Deploying....'
-                
-            }
-        }
-
     }
 }

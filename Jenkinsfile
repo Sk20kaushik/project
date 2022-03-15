@@ -20,10 +20,11 @@ pipeline {
         }
         stage('Deploy') {              
            steps {
-                sh 'deploying'
+               sh 'deploying'
                 
             }
         }
 
     }
 }
+

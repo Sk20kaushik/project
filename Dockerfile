@@ -1,6 +1,6 @@
 pipeline {
     
-    agent none 
+    agent {Lable='jenkins'}
    
     environment {
         DOCKERHUB_CREDENTIALS=credentials('14607bb0-0530-435d-b03d-f1bd8cb1bbb8')

@@ -1,9 +1,7 @@
 pipeline {
     
     agent {Lable='jenkins'}
-   
-    environment {
-        DOCKERHUB_CREDENTIALS=credentials('14607bb0-0530-435d-b03d-f1bd8cb1bbb8')
+    
     }
     
     stages {
@@ -18,29 +16,24 @@ pipeline {
         stage('Build') {
         
             steps {
-                sh 'docker build -t kaushik20/project1-pipeline:latest .'
+                sh 'sudo yum -y install java-1.8*'
+                
             }
         }
         
-        stage('Login') {
+        stage('install git') {
         
             steps {
-                sh 'echo $DOCKERHUB_CREDENTIALS_PSW | docker login -u $DOCKERHUB_CREDENTIALS_USR --password-stdin'
+                sh 'sudo yum -y install git'
             }
         }
         
-        stage('push') {
+        stage('install maven') {
         
             steps {
-                sh 'docker push kaushik20/project1-pipeline:latest'
+                sh 'sudo yum -y install maven'
             }    
         }
      }
      
-     post {
-          always {
-              sh 'docker logout'
-          }
-    }
-    
-}    
+ 

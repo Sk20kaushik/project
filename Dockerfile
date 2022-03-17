@@ -1,8 +1,5 @@
 pipeline {
-    
-    agent {Lable='jenkins'}
-    
-    }
+     agent any
     
     stages {
     

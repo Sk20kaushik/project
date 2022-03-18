@@ -9,13 +9,12 @@ pipeline {
                 git 'https://github.com/Sk20kaushik/project.git'
             }
         }        
-        
-        stage('Build') {
-        
-            steps {
-                sh 'sudo yum -y install java-1.8*'
-                
-            }
+       stage('ContinuousBuild')
+  {
+            sh 'mvn package'
+  } 
+                   
+          }
        
          }    
       }

@@ -16,21 +16,9 @@ pipeline {
                 sh 'sudo yum -y install java-1.8*'
                 
             }
-        }
-        
-        stage('install git') {
-        
-            steps {
-                sh 'sudo yum -y install git'
-            }
-        }
-        
-        stage('install maven') {
-        
-            steps {
-                sh 'sudo yum -y install maven'
-            }    
-        }
-     }
+       
+         }    
+      }
+  }
      
  

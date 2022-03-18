@@ -9,8 +9,8 @@ pipeline {
                 git 'https://github.com/Sk20kaushik/project.git'
             }
         }        
-       stage('ContinuousBuild')
-  {
+       stage('Build'){
+  
             sh 'mvn package'
   } 
                    

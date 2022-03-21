@@ -1,30 +1,10 @@
-pipeline {
-     agent any
-    
-    stages {
-    
-        stage('gitclone') {
-            
-            steps {
-                git 'https://github.com/Sk20kaushik/project.git'
-            }
-        }        
-       stage('Build maven'){
-           steps {
-              sh 'mvn package'
-  } 
-             stage('Test') {
-            steps {
-                sh 'mvn test'
-            }
-        }
-        stage('Deploy') {              
-           steps {
-               echo 'deploying....'      
-          }
-       
-         }    
-      }
-  }
-     
+FROM tomcat:latest
+
+LABEL maintainer="kaushik20"
+
+ADD ./target/LoginWebAppCal-1.3.5.war /usr/local/tomcat/webapps/
+
+EXPOSE 8080
+
+CMD ["catalina.sh", "run"]
  
